@@ -28,6 +28,9 @@ module Admin
 
     def update
       @user = User.find(params[:id])
+      unless user_params.include?("roles")
+        @user.roles = {}
+      end
       if @user.update_attributes(user_params)
         flash[:notice] = "User was updated."
         redirect_to admin_users_path
