@@ -5,7 +5,6 @@ module Admin
 
     def index
       @users = User.all
-
       respond_with(@users)
     end
 
@@ -37,6 +36,13 @@ module Admin
       end
     end
 
+    def destroy
+      user = User.find(params[:id])
+      user.destroy
+      flash[:notice] = "#{user.first_name} was destroyed."
+      redirect_to admin_users_path
+    end
+
     def impersonate
       user = User.find(params[:id])
       track_impersonation(user, 'Start')
@@ -63,7 +69,7 @@ module Admin
     end
 
     def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, roles: [])
   end
   end
 end

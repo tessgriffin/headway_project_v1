@@ -10,6 +10,8 @@ table
       th
         | Email
       th
+        | Roles
+      th
       th
       th
   tbody
@@ -22,11 +24,13 @@ table
         td
           = link_to user.email, impersonate_admin_user_path(user)
         td
+          = user.roles.to_a.join(", ")
+        td
           = link_to 'Show', user
         td
           = link_to 'Edit', edit_admin_user_path(user)
         td
-          = link_to 'Destroy', user, data: { confirm: 'Are you sure?' }, method: :delete
+          = link_to 'Destroy', admin_user_path(user), data: { confirm: 'Are you sure?' }, method: :delete
 br
 
 p

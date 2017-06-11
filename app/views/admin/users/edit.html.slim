@@ -9,6 +9,12 @@ h1
   = f.label      :last_name
   = f.text_field :last_name
 
+  = f.label     :roles
+  = label_tag 'Admin'
+  = f.check_box :roles, { :multiple => true }, :admin, nil
+  = label_tag 'Teacher'
+  = f.check_box :roles, { :multiple => true }, :teacher, nil
+
   = f.label      :email
   = f.text_field :email
 
