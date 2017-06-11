@@ -17,8 +17,8 @@ FactoryGirl.define do
     trait :teacher do
       roles [:teacher]
       first_name 'Abby'
-      last_name 'Teacher'
-      email 'teacher@exmaple.com'
+      last_name 'Teach'
+      email 'teach@exmaple.com'
     end
   end
 end
